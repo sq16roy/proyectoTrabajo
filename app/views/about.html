@@ -1,0 +1,22 @@
+<section class="container-fluid">
+  <input type="file" ng-mouseleave="handleFile($event)" />
+  <div class="container-fluid table-responsive" ng-repeat="item in items">
+    <h2>{{item.name}}</h2>
+    <table class="table table-hover container-fluid">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Path</th> 
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="data in item.items">
+          <td>{{data.fecha}}</td>
+          <td>{{data.PATH}}</td> 
+          <td>{{data.COMENT}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
