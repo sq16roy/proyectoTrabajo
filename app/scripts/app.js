@@ -15,19 +15,21 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'angular-js-xlsx'
+    'angular-js-xlsx',
+    'ui.router',
+    'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
+      $urlRouterProvider.otherwise("/");
+      $stateProvider
+        .state('state1', {
+            url: "/",
+            templateUrl: 'views/main.html',
+            controller: 'MainCtrl'
+        })
+        .state('state2', {
+            url: "/about",
+            templateUrl: 'views/about.html',
+            controller: 'AboutCtrl'
+        });
   });

@@ -1,6 +1,31 @@
 <section class="container-fluid">
   <input type="file" ng-mouseleave="handleFile($event)" />
-  <div class="container-fluid table-responsive" ng-repeat="item in items">
+  <!--<div class="container-fluid table-responsive" ng-repeat="item in items">
+    <h2>{{item.name}}</h2>
+    <table class="table table-hover container-fluid">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Path</th> 
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="data in item.items">
+          <td>{{data.fecha}}</td>
+          <td>{{data.PATH}}</td> 
+          <td>{{data.COMENT}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>-->
+</section>
+<ul class="nav nav-tabs">
+  <li class="active" ng-repeat="item in items track by $index" ng-click="changeStateTable($index)"><a data-toggle="tab">{{item.name}}</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="container-fluid table-responsive" ng-repeat="item in items track by $index" id="{{$index}}" class="tab-pane fade in active" ng-if="$index == stateTemp">
     <h2>{{item.name}}</h2>
     <table class="table table-hover container-fluid">
       <thead>
@@ -19,4 +44,4 @@
       </tbody>
     </table>
   </div>
-</section>
+</div>

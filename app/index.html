@@ -32,15 +32,15 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">exel</a>
+            <a class="navbar-brand" href="#/">File List</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">Tables</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ui-sref="state1">Home</a></li>
+              <li><a ui-sref="state2">Tables</a></li>
+              <li><a ng-href="/">Contact</a></li>
             </ul>
           </div>
         </div>
@@ -48,12 +48,11 @@
     </div>
 
     <div class="container-fluid">
-    <div ng-view=""></div>
+    <div ui-view></div>
     </div>
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
     </div>
 
@@ -72,6 +71,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>    
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -84,6 +84,9 @@
     <script src="bower_components/js-xls/dist/xls.js"></script>
     <script src="bower_components/es6-promise/promise.js"></script>
     <script src="bower_components/alasql/dist/alasql.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

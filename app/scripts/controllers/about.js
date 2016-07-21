@@ -46,7 +46,11 @@ angular.module('exelApp')
 		}
 	});
 	return result;
-}
+};
+$scope.stateTemp = 0;
+$scope.changeStateTable = function(index) {
+    $scope.stateTemp = index;
+};
 
  // if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 
