@@ -10,11 +10,14 @@
 angular.module('exelApp')
   .controller('AboutCtrl', function ($scope, $rootScope, TableService, $timeout) {
       $scope.stateTemp = 0;
-      $scope.costumer = {};
+      $scope.myTempFile = {};
       $scope.changeStateTable = function(index) {
          $scope.stateTemp = index;
       };
-      $scope.testing = function() {
-          $scope.test = TableService.handleFile($scope.costumer);
+      $scope.chagreTables = function() {
+          TableService.handleFile($scope.myTempFile).then(function(data){
+            console.log(data);
+            $scope.myTables = data;
+          });
       }
   });

@@ -10,7 +10,8 @@
 angular.module('tablesServices', [])
 
 //service to get date from json file
-.service('TableService', function() {
+.service('TableService', function($q) {
+    var deferred = $q.defer();
     var items = [];
      this.handleFile = function(e) {
         //console.log(e);
@@ -24,12 +25,14 @@ angular.module('tablesServices', [])
             var workbook = XLSX.read(data, {type: 'binary'});
             //$scope.$apply(function(){
                 items = to_json(workbook);
+                deferred.resolve(items);
                 //console.log(items);
             //});
             };
             reader.readAsBinaryString(f);
         }
-        return items;
+        
+        return deferred.promise;
     };
     var X = XLSX;
     function to_json(workbook) {
