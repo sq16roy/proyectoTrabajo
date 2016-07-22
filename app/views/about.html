@@ -20,10 +20,9 @@
     </table>
   </div>-->
 </section>
-<ul class="nav nav-tabs">
-  <li class="active" ng-repeat="item in items track by $index" ng-click="changeStateTable($index)"><a data-toggle="tab">{{item.name}}</a></li>
+<ul class="nav nav-pills">
+  <li ng-class="{'active': $index == stateTemp}" ng-repeat="item in items track by $index" ng-click="changeStateTable($index)"><a>{{item.name}}</a></li>
 </ul>
-
 <div class="tab-content">
   <div class="container-fluid table-responsive" ng-repeat="item in items track by $index" id="{{$index}}" class="tab-pane fade in active" ng-if="$index == stateTemp">
     <h2>{{item.name}}</h2>
