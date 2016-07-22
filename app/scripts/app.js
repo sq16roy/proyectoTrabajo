@@ -17,7 +17,9 @@ angular
     'ngSanitize',
     'angular-js-xlsx',
     'ui.router',
-    'ngTouch'
+    'ngTouch',
+    'fileModelDirectives',
+    'tablesServices'
   ])
   .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise("/");

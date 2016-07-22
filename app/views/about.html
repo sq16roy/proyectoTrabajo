@@ -1,5 +1,7 @@
-<section class="container-fluid">
-  <input type="file" ng-mouseleave="handleFile($event)" />
+<section class="container-fluid" ng-init="test">
+  <input type="button" ng-click="testing()" value="Do It!" />
+  <input type="file" id="exampleInputFile" file-model="costumer.file">
+  {{costumer.file.name}}
   <!--<div class="container-fluid table-responsive" ng-repeat="item in items">
     <h2>{{item.name}}</h2>
     <table class="table table-hover container-fluid">
@@ -21,10 +23,10 @@
   </div>-->
 </section>
 <ul class="nav nav-pills">
-  <li ng-class="{'active': $index == stateTemp}" ng-repeat="item in items track by $index" ng-click="changeStateTable($index)"><a>{{item.name}}</a></li>
+  <li ng-class="{'active': $index == stateTemp}" ng-repeat="item in test track by $index" ng-click="changeStateTable($index)"><a>{{item.name}}</a></li>
 </ul>
 <div class="tab-content">
-  <div class="container-fluid table-responsive" ng-repeat="item in items track by $index" id="{{$index}}" class="tab-pane fade in active" ng-if="$index == stateTemp">
+  <div class="container-fluid table-responsive" ng-repeat="item in test track by $index" id="{{$index}}" class="tab-pane fade in active" ng-if="$index == stateTemp">
     <h2>{{item.name}}</h2>
     <table class="table table-hover container-fluid">
       <thead>
