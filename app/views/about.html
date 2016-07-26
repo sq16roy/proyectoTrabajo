@@ -1,32 +1,38 @@
 <section class="container-fluid">
-  <input type="button" ng-click="chagreTables()" value="Do It!" />
-  
-  <label class="btn btn-default btn-file">
-    Browse <input type="file" id="exampleInputFile" file-model="myTempFile.file" style="display: none;">
-  </label>
-  {{myTempFile.file.name}}
-</section>
-<ul class="nav nav-pills">
-  <li ng-class="{'active': $index == stateTemp}" ng-repeat="item in myTables track by $index" ng-click="changeStateTable($index)" style="cursor: pointer;"><a>{{item.name}}</a></li>
-</ul>
-<div class="tab-content">
-  <div class="container-fluid table-responsive" ng-repeat="item in myTables track by $index" id="{{$index}}" class="tab-pane fade in active" ng-if="$index == stateTemp">
-    <h2>{{item.name}}</h2>
-    <table class="table table-hover container-fluid">
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Path</th> 
-          <th>Comment</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="data in item.items">
-          <td>{{data.fecha}}</td>
-          <td>{{data.PATH}}</td> 
-          <td>{{data.COMENT}}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="padding-new-table-options">
+    <h1>My Projects</h1>
+    <label class="btn btn-info btn-file">
+      Browse <input type="file" id="exampleInputFile" file-model="myTempFile.file" style="display: none;">
+    </label>
+    <p>{{myTempFile.file.name}}</p>
+    <button type="button" class="btn btn-success" ng-click="chagreTables()">Load</button>
+    <button type="button" class="btn btn-warning" ng-click="clearTables()">Clear</button>  
   </div>
-</div>
+  <ul class="nav nav-pills container-fluid">
+    <li ng-class="{'active': $index == stateTemp}" ng-repeat="item in myTables track by $index" ng-click="changeStateTable($index)" style="cursor: pointer;"><a>{{item.name}}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="container-fluid table-responsive" ng-repeat="item in myTables track by $index" id="{{$index}}" class="tab-pane fade in active" ng-if="$index == stateTemp">
+      <h2>{{item.name}}</h2>
+      <table class="table table-hover container-fluid">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Path</th> 
+            <th>Comment</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="data in item.items">
+            <td>{{data.fecha}}</td>
+            <td>{{data.PATH}}</td> 
+            <td>{{data.COMENT}}</td>
+            <td><button type="button" class="btn btn-success" ng-click="open()">Edit</button></td>
+            <td><buton class="btn btn-danger" ng-click="deleteRow($index)">Delete</buton></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

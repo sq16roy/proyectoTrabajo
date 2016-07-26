@@ -15,6 +15,8 @@ angular.module('tablesServices', [])
     var items = [];
      this.handleFile = function(e) {
         //console.log(e);
+        console.log(deferred.promise);
+        deferred = $q.defer();
         var files = e;
         var f = files.file;
         {

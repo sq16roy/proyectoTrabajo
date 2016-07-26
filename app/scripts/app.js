@@ -19,7 +19,8 @@ angular
     'ui.router',
     'ngTouch',
     'fileModelDirectives',
-    'tablesServices'
+    'tablesServices',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $stateProvider, $urlRouterProvider) {
       $urlRouterProvider.otherwise("/");
