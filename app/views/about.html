@@ -20,6 +20,7 @@
             <th>Fecha</th>
             <th>Path</th> 
             <th>Comment</th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -28,7 +29,7 @@
             <td>{{data.fecha}}</td>
             <td>{{data.PATH}}</td> 
             <td>{{data.COMENT}}</td>
-            <td><button type="button" class="btn btn-success" ng-click="open()">Edit</button></td>
+            <td><button type="button" class="btn btn-success" ng-click="open(s,$index)">Edit</button></td>
             <td><buton class="btn btn-danger" ng-click="deleteRow($index)">Delete</buton></td>
           </tr>
         </tbody>

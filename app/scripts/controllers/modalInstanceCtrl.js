@@ -2,11 +2,18 @@ angular.module('exelApp')
 .controller('ModalInstanceCtrl', function ($scope, $rootScope, $log, $uibModalInstance, items) {
     
     $scope.item = items;
+    $scope.tempPath = $scope.item.items[$scope.item.id].PATH;
+    $scope.tempDate = $scope.item.items[$scope.item.id].fecha;
+    $scope.tempComment = $scope.item.items[$scope.item.id].COMENT;
+    console.log($scope.tempPath);
     /*$scope.selected = {
         item: $scope.items[0]
     };*/
 
     $scope.ok = function () {
+        $scope.item.items[$scope.item.id].PATH = $scope.tempPath;
+        $scope.item.items[$scope.item.id].fecha = $scope.tempDate;
+        $scope.item.items[$scope.item.id].COMENT = $scope.tempComment;
         $uibModalInstance.close();
     };
 
@@ -44,7 +51,7 @@ angular.module('exelApp')
     return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
   }
 
-  $scope.toggleMin = function() {
+ $scope.toggleMin = function() {
     $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
     $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
   };
@@ -53,10 +60,6 @@ angular.module('exelApp')
 
   $scope.open1 = function() {
     $scope.popup1.opened = true;
-  };
-
-  $scope.open2 = function() {
-    $scope.popup2.opened = true;
   };
 
   $scope.setDate = function(year, month, day) {
@@ -68,10 +71,6 @@ angular.module('exelApp')
   $scope.altInputFormats = ['M!/d!/yyyy'];
 
   $scope.popup1 = {
-    opened: false
-  };
-
-  $scope.popup2 = {
     opened: false
   };
 
@@ -94,10 +93,10 @@ angular.module('exelApp')
     var date = data.date,
       mode = data.mode;
     if (mode === 'day') {
-      var dayToCheck = new Date(date).setHours(0,0,0,0);
+      var dayToCheck = new Date(date);
 
       for (var i = 0; i < $scope.events.length; i++) {
-        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+        var currentDay = new Date($scope.events[i].date);
 
         if (dayToCheck === currentDay) {
           return $scope.events[i].status;

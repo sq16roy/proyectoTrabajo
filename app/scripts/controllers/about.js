@@ -39,8 +39,8 @@ angular.module('exelApp')
       };
       //modal functions
       $scope.animationsEnabled = true;
-
-      $scope.open = function (size) {
+      $scope.tempModalRow = '';
+      $scope.open = function (size, index) {
 
         var modalInstance = $uibModal.open({
           animation: $scope.animationsEnabled,
@@ -49,8 +49,10 @@ angular.module('exelApp')
           size: size,
           resolve: {
             items: function () {
-              $log.info($scope.myTables[0].name);
-              return $scope.myTables[0].name;
+              $log.info($scope.myTables[$scope.stateTemp]);
+              $scope.tempModalRow = $scope.myTables[$scope.stateTemp];
+              $scope.tempModalRow.id = index;
+              return $scope.tempModalRow;
             }
           }
         });
