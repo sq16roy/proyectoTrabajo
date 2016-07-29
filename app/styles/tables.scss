@@ -6,4 +6,33 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .padding-new-table-options
 {
     padding-bottom: 2%;
+    h1
+    {
+        text-align: center;
+    }
+}
+
+.table-add-rows
+{
+    margin-top: 24px;
+    min-width: 304px;
+    margin-bottom: 24px;
+    padding-left: 0;
+}
+#browseTable
+{
+   min-width: 304px;
+   button {
+        margin-right: 2%;
+    }
+    p
+    {
+        margin: 6px 10px 0px;
+
+    }
+    div
+    {
+        margin-top: 15%;
+        margin-left: 74px;
+    }
 }

@@ -1,20 +1,25 @@
 angular.module('exelApp')
-.controller('ModalInstanceCtrl', function ($scope, $rootScope, $log, $uibModalInstance, items) {
+.controller('AddModalInstanceCtrl', function ($scope, $rootScope, $log, $uibModalInstance, items) {
     //variables for modal edit 
+      $scope.item = items;
+      $scope.tempPath = '';
+      $scope.tempDate = '';
+      $scope.tempComment = '';
     
-     $scope.item = items;
-     $scope.tempPath = $scope.item.items[$scope.item.id].PATH;
-     $scope.tempDate = $scope.item.items[$scope.item.id].fecha;
-     $scope.tempComment = $scope.item.items[$scope.item.id].COMENT; 
     console.log($scope.tempPath);
     /*$scope.selected = {
         item: $scope.items[0]
     };*/
-    //edit row modal 
+    //add new row modal
     $scope.ok = function () {
-        $scope.item.items[$scope.item.id].PATH = $scope.tempPath;
-        $scope.item.items[$scope.item.id].fecha = $scope.tempDate;
-        $scope.item.items[$scope.item.id].COMENT = $scope.tempComment;
+      console.log($scope.item);
+        $scope.item.items.push(
+          {
+            "PATH": $scope.tempPath,
+            "fecha": $scope.tempDate,
+            "COMENT" : $scope.tempComment
+          }
+        );
         $uibModalInstance.close();
     };
     //cancel modal

@@ -1,23 +1,38 @@
 <section class="container-fluid">
   <div class="padding-new-table-options">
     <h1>My Projects</h1>
-    <label class="btn btn-info btn-file">
-      Browse <input type="file" id="exampleInputFile" file-model="myTempFile.file" style="display: none;">
-    </label>
-    <p>{{myTempFile.file.name}}</p>
-    <button type="button" class="btn btn-success" ng-click="chagreTables()">Load</button>
-    <button type="button" class="btn btn-warning" ng-click="clearTables()">Clear</button>  
+    <div class="pull-left" id="browseTable">
+      <button class="btn btn-info pull-left" ng-click="open(s,'newRow')" ng-show="myTables">Add Row</button>
+      <button class="btn btn-info pull-left" ng-click="showImporRows = !showImporRows" ng-show="myTables">Import multiple rows</button>
+      <div class="container-fluid" ng-show="showImporRows">
+        <button type="button" class="btn btn-success pull-left" ng-click="addMultiplesRows()" ng-show="myTables">Add</button>
+         <button type="button" class="btn btn-success pull-left" ng-click="loadTables()" ng-hide="myTables">Load</button>
+      <button type="button" class="btn btn-warning pull-left" ng-click="clearTables()" ng-hide="myTables">Clear</button>
+        <label class="btn btn-info btn-file pull-left">
+          Browse <input type="file" id="exampleInputFile" file-model="myTempFile.file" style="display: none;">
+        </label>
+        <p class="pull-left">{{myTempFile.file.name}}</p>
+      </div>
+    </div>
+    <div class="container-fluid pull-left table-add-rows col-lg-12" id="tableOptions">
+     
+    </div>
   </div>
   <ul class="nav nav-pills container-fluid">
     <li ng-class="{'active': $index == stateTemp}" ng-repeat="item in myTables track by $index" ng-click="changeStateTable($index)" style="cursor: pointer;"><a>{{item.name}}</a></li>
   </ul>
   <div class="tab-content">
     <div class="container-fluid table-responsive" ng-repeat="item in myTables track by $index" id="{{$index}}" class="tab-pane fade in active" ng-if="$index == stateTemp">
-      <h2>{{item.name}}</h2>
+      <div class="container-fluid">
+        <h2 class="pull-left">{{item.name}}</h2>
+        <div class="form-group">
+          <input type="text" class="form-control" id="Search" placeholder="Search" ng-model="searchRow">
+        </div>
+      </div>
       <table class="table table-hover container-fluid">
         <thead>
           <tr>
-            <th>Fecha</th>
+            <th>Date</th>
             <th>Path</th> 
             <th>Comment</th>
             <th>Edit</th>
@@ -25,7 +40,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="data in item.items">
+          <tr ng-repeat="data in item.items | filter:searchRow">
             <td>{{data.fecha}}</td>
             <td>{{data.PATH}}</td> 
             <td>{{data.COMENT}}</td>
